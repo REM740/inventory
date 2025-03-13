@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('template.main')
 
 @section('content')
 <div class="container mt-5">
@@ -9,6 +9,9 @@
         <button class="btn btn-success" onclick="window.location.href='{{ route('items.create') }}'">
             <i class="fas fa-plus"></i> Add Item
         </button>
+        <button class="btn btn-primary" onclick="window.location.href='{{ route('categories.index') }}'">
+    Categories
+</button>
     </div>
 
     <!-- Inventory Table -->
@@ -17,7 +20,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Category ID</th>
+                    <th>Category</th>
                     <th>Item Name</th>
                     <th>Price</th>
                     <th>Actions</th>
@@ -27,7 +30,7 @@
                 @foreach($items as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->category_id }}</td>
+                    <td>{{ $item->category->name ?? 'No Category' }}</td>
                     <td>{{ $item->name }}</td>
                     <td>${{ number_format($item->price, 2) }}</td>
                     <td>

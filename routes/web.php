@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CategoryController;
 
 Route::middleware(['auth'])->group(function () {
 Route::get('/items', [ItemController::class, 'index'])->name('items.index');
@@ -17,3 +18,5 @@ Route::get('/index', function () {
 
 Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
 Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

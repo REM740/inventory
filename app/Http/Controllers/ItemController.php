@@ -14,6 +14,8 @@ class ItemController extends Controller
     {
         $items = Item::all(); // Fetch all items from the database
         return view('index', compact('items'));
+        $items = Item::with('category')->get();
+        return view('items.index', compact('items'));
         // Pass $items to the view
     }
     public function create()
