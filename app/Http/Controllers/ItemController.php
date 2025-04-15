@@ -38,4 +38,26 @@ class ItemController extends Controller
         ]);
         return redirect()->route('items.index')->with('success', 'Item added successfully!');
 }
+
+public function edit($id)
+{
+    $item = Item::findOrFail($id);
+    $categories = Category::all();
+
+    return view('items.edit', compact('item', 'categories'));
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'price' => 'required|numeric|min:0',
+        'category_id' => 'required|exists:categories,id',
+    ]);
+    $item = Item::findOrFail($id);
+    $item->update($request->only('name', 'price', 'category_id'));
+
+    return redirect()->route('items.index')->with('success', 'Item updated successfully!');
+}
+
 }

@@ -34,9 +34,10 @@
                     <td>{{ $item->name }}</td>
                     <td>${{ number_format($item->price, 2) }}</td>
                     <td>
-                        <button class="btn btn-warning btn-sm">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
+                    <button class="btn btn-warning btn-sm" onclick="window.location.href='{{ route('items.edit', $item->id) }}'">
+    <i class="fas fa-edit"></i> Edit
+</button>
+
                         <button class="btn btn-danger btn-sm" onclick="deleteItem(this)">
                             <i class="fas fa-trash"></i> Delete
                         </button>

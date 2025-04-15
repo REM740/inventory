@@ -6,8 +6,8 @@
 
     <div class="d-flex justify-content-between mb-3">
         <button class="btn btn-primary" onclick="window.location.href='{{ route('items.index') }}'">
-        <i class="fas fa-home"></i> Home
-</button>
+            <i class="fas fa-home"></i> Home
+        </button>
     </div>
 
     <!-- Categories Table -->
@@ -18,6 +18,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>Actions</th> 
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,11 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description ?? 'No description available' }}</td>
+                    <td>
+                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Update
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -36,3 +42,4 @@
 <!-- Add FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 @endsection
+

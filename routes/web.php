@@ -20,3 +20,7 @@ Route::get('/items/create', [ItemController::class, 'create'])->name('items.crea
 Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+
+Route::resource('items', ItemController::class);
